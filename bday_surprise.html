@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday❤️</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        body {
+            background: #080014;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Background */
+        .background {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .blob {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.5;
+            animation: float 8s infinite alternate ease-in-out;
+        }
+
+        .blob:nth-child(1) {
+            top: -100px;
+            left: -80px;
+            background: #ff2d75;
+        }
+
+        .blob:nth-child(2) {
+            right: -100px;
+            bottom: -100px;
+            background: #7a2cff;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(100px, -70px);
+            }
+        }
+
+        /* Slides */
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.9s ease;
+            pointer-events: none;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+        }
+
+        .slide-content {
+            max-width: 850px;
+        }
+
+        /* Text */
+        h1 {
+            font-size: clamp(45px, 8vw, 90px);
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ff4d8d, #ffb6d9, #ffffff);
+            : text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s infinite alternate;
+        }
+
+        h2 {
+            font-size: clamp(35px, 6vw, 65px);
+            margin-bottom: 25px;
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #eeeeee;
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 5px #ff2d75);
+            }
+
+            to {
+                filter: drop-shadow(0 0 25px #ff2d75);
+            }
+        }
+
+        /* Button */
+        button {
+            margin-top: 35px;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #ff2d75, #8e44ff);
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 20px rgba(255, 45, 117, 0.4);
+        }
+
+        button:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 35px rgba(255, 45, 117, 0.7);
+        }
+
+        /* Heart */
+        .heart {
+            font-size: 100px;
+            animation: heartbeat 1.2s infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* Cake */
+        .cake {
+            font-size: 120px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Floating hearts */
+        .floating-heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 25px;
+            animation: rise linear forwards;
+            opacity: 0.8;
+        }
+
+        @keyframes rise {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Progress */
+        .progress {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #777;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            width: 28px;
+            border-radius: 10px;
+            background: #ff4d8d;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            bottom: 55px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .nav button {
+            margin: 0;
+            padding: 10px 22px;
+            font-size: 14px;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            p {
+                font-size: 17px;
+            }
+
+            .heart {
+                font-size: 70px;
+            }
+
+            .cake {
+                font-size: 80px;
+            }
+        }
+
+        /* ================= LAST SLIDE: HAPPY 21 CAKE ================= */
+
+        .cake-slide {
+            width: min(100%, 1100px);
+            animation: cakeAppear 0.9s ease;
+        }
+
+        @keyframes cakeAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.92);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .cake-title {
+            font-size: clamp(30px, 4vw, 50px);
+            font-weight: 750;
+            color: #fff;
+            margin-bottom: 14px;
+            text-shadow: 0 0 12px rgba(255,255,255,0.08);
+        }
+
+        .cake-subtitle {
+            font-size: clamp(16px, 2vw, 22px);
+            color: #f6a6cc !important;
+            margin-bottom: 34px;
+        }
+
+        .big-cake {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            margin: 0 auto;
+        }
+
+        .cake-body {
+            position: absolute;
+            left: 10px;
+            bottom: 28px;
+            width: 300px;
+            height: 150px;
+            border-radius: 0 0 38px 38px;
+            background: linear-gradient(to bottom, #ff8bb9 0%, #ff69a5 100%);
+            box-shadow:
+                0 0 28px rgba(255, 53, 145, 0.38),
+                0 16px 34px rgba(255, 53, 145, 0.28);
+            z-index: 2;
+        }
+
+        .cake-top {
+            position: absolute;
+            left: 10px;
+            top: 112px;
+            width: 300px;
+            height: 72px;
+            border-radius: 50%;
+            background: #ffd2e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94204e;
+            font-size: 31px;
+            font-weight: 800;
+            z-index: 5;
+            box-shadow: 0 4px 18px rgba(255,255,255,0.12);
+        }
+
+        .cake-body::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 300px;
+            height: 42px;
+            background: #ff9bc3;
+            border-radius: 0 0 40px 40px;
+        }
+
+        .cake-layer {
+            position: absolute;
+            left: 10px;
+            bottom: 75px;
+            width: 300px;
+            height: 9px;
+            background: #ffeef5;
+            z-index: 4;
+            box-shadow: 0 0 8px rgba(255,255,255,0.18);
+        }
+
+        .candle {
+            position: absolute;
+            top: 27px;
+            width: 23px;
+            height: 71px;
+            border-radius: 5px;
+            background:
+                repeating-linear-gradient(
+                    -45deg,
+                    #ffffff 0 7px,
+                    #ff63a0 7px 14px
+                );
+            z-index: 10;
+            box-shadow:
+                0 0 8px rgba(255,255,255,0.35);
+        }
+
+        .candle1 { left: 65px; }
+        .candle2 { left: 149px; }
+        .candle3 { right: 65px; }
+
+        .flame {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 32px;
+            filter: drop-shadow(0 0 7px rgba(255,165,0,0.75));
+            animation: flameFlicker 0.65s ease-in-out infinite alternate;
+        }
+
+        @keyframes flameFlicker {
+            from {
+                transform: translateX(-50%) scale(1) rotate(-3deg);
+            }
+            to {
+                transform: translateX(-50%) scale(1.13) rotate(3deg);
+            }
+        }
+
+        .blow-text {
+            margin-top: 0;
+            font-size: clamp(25px, 3vw, 35px);
+            color: #fff;
+            text-shadow:
+                0 0 10px rgba(255,180,215,0.75),
+                0 0 22px rgba(255,80,160,0.35);
+            animation: blowGlow 1.4s ease-in-out infinite alternate;
+        }
+
+        @keyframes blowGlow {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-2px);
+            }
+        }
+
+        .wish-text {
+            margin-top: 10px;
+            font-size: 18px;
+            line-height: 1.65;
+            color: #e9ddec;
+        }
+
+        .cake-slide button {
+            margin-top: 22px;
+        }
+
+        @media (max-width: 600px) {
+            .cake-slide {
+                transform: scale(0.92);
+            }
+
+            .cake-title {
+                font-size: 28px;
+            }
+
+            .cake-subtitle {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            .big-cake {
+                transform: scale(0.76);
+                margin-top: -18px;
+                margin-bottom: -25px;
+            }
+
+            .blow-text {
+                font-size: 23px;
+            }
+
+            .wish-text {
+                font-size: 15px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background">
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+
+    <!-- Slide 1 -->
+    <section class="slide active">
+        <div class="slide-content">
+            <div class="heart">❤️</div>
+
+            <h1>Hey Beautiful...</h1>
+
+            <p>
+                I made something special for a very special person.
+                <br>
+                So... let's begin.
+            </p>
+
+            <button onclick="nextSlide()">Click Here ✨</button>
+        </div>
+    </section>
+
+
+    <!-- Slide 2 -->
+    <section class="slide">
+        <div class="slide-content">
+
+            <h2>Today is a Special Day 🎉</h2>
+
+            <p>
+                Because someone very special
+                was born today.
+                <br><br>
+
+                And that someone is
+                <strong>YOU ❤️</strong>
+            </p>
+
+            <button onclick="nextSlide()">Continue →</button>
+        </div>
+    </section>
+
+
+    <!-- Slide 3 -->
+    <section class="slide">
+        <div class="slide-content">
+
+            <div class="cake">🎂</div>
+
+            <h2>Happy Birthday Ayushi❤️</h2>
+
+            <p>
+                May your smile never fade,
+                <br>
+                may your dreams become reality,
+                <br>
+                and may this year bring you
+                everything you've wished for..✨
+                <br
+                Or hmesha aisi rhna jaisi ho never change for anyone...You are perfect the way you are...❤️
+            </p>
+
+            <button onclick="nextSlide()">One More Thing ❤️</button>
+        </div>
+    </section>
+
+
+    <!-- Slide 4 -->
+    <section class="slide">
+        <div class="slide-content">
+
+            <div class="heart">💖</div>
+
+            <h2>You Deserve The Best</h2>
+
+            <p>
+                Tm sad achi nhi lgti ho...
+                <br>
+                Always stay happy and keep smiling...
+                <br>
+                Wish you a happy and beautiful life ahead...
+                <br><br>
+
+                And endless reasons to smile...😊
+            </p>
+
+            <button onclick="nextSlide()">Final Message →</button>
+        </div>
+    </section>
+
+
+    <!-- Slide 5 -->
+    <section class="slide">
+        <div class="slide-content">
+
+            <h1>Happy Birthday again ❤️</h1>
+
+            <p>
+                Keep shining...
+                <br>
+                Keep smiling...
+                <br>
+                Or Or Or jldi mujhe cll krna...😁
+                <br><br>
+
+                <strong>
+                    Have a beautiful and fantastic birthday or sad nhi rho bday celebrate krloo!
+                </strong>
+            </p>
+
+            <button onclick="nextSlide()">Yaa Firr</button>
+        </div>
+    </section>
+
+
+     <!-- ================================================= -->
+    <!--              FINAL SLIDE — SPECIAL CAKE         -->
+    <!-- ================================================= -->
+
+    <section class="slide">
+
+        <div class="slide-content cake-slide">
+
+            <h2 class="cake-title">
+                You said you don't want to celebrate...
+            </h2>
+
+            <p class="cake-subtitle">
+                So I brought the celebration to you...❤️
+            </p>
+
+
+            <!-- CSS CAKE -->
+
+            <div class="big-cake">
+
+                <!-- Candle 1 -->
+                <div class="candle candle1">
+                    <span class="flame">
+                        🔥
+                    </span>
+                </div>
+
+                <!-- Candle 2 -->
+                <div class="candle candle2">
+                    <span class="flame">
+                        🔥
+                    </span>
+                </div>
+
+                <!-- Candle 3 -->
+                <div class="candle candle3">
+                    <span class="flame">
+                        🔥
+                    </span>
+                </div>
+
+                <!-- Cake top -->
+                <div class="cake-top">
+                    Happy Bdayy❤️
+                </div>
+
+                <!-- Cake -->
+                <div class="cake-body"></div>
+
+                <!-- Decorative layer -->
+                <div class="cake-layer"></div>
+
+            </div>
+
+
+            <h3 class="blow-text">
+                🕯️ Blow the candles 🕯️
+            </h3>
+
+            <p class="wish-text">
+                Make one wish...
+                <br>
+                Maybe this year will surprise you...✨
+            </p>
+
+            <button onclick="blowCandles()">
+                Blow Them Out 💨❤️
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!--                 PROGRESS DOTS                     -->
+    <!-- ================================================= -->
+
+    <div class="progress">
+
+        <div class="dot active"></div>
+
+        <div class="dot"></div>
+
+        <div class="dot"></div>
+
+        <div class="dot"></div>
+
+        <div class="dot"></div>
+
+        <div class="dot"></div>
+
+    </div>
+
+
+    <!-- ================================================= -->
+    <!--                  JAVASCRIPT                       -->
+    <!-- ================================================= -->
+
+    <script>
+
+        const slides =
+            document.querySelectorAll(".slide");
+
+        const dots =
+            document.querySelectorAll(".dot");
+
+        const nameFields =
+            document.querySelectorAll(".personName");
+
+        let currentSlide = 0;
+
+        let personName = "";
+
+
+        /* ============================================= */
+        /* START BIRTHDAY                               */
+        /* ============================================= */
+
+        function startBirthday() {
+
+            const input =
+                document.getElementById("nameInput");
+
+            personName =
+                input.value.trim();
+
+
+            if (personName === "") {
+
+                alert(
+                    "Please enter a name ❤️"
+                );
+
+                input.focus();
+
+                return;
+            }
+
+
+            /*
+                Put entered name
+                into every .personName
+            */
+
+            nameFields.forEach(
+                field => {
+
+                    field.textContent =
+                        personName;
+
+                }
+            );
+
+
+            nextSlide();
+        }
+
+
+        /* ============================================= */
+        /* SHOW SLIDE                                  */
+        /* ============================================= */
+
+        function showSlide(index) {
+
+            if (index >= slides.length) {
+
+                index = 0;
+
+            }
+
+
+            if (index < 0) {
+
+                index =
+                    slides.length - 1;
+
+            }
+
+
+            slides[currentSlide]
+                .classList
+                .remove("active");
+
+
+            dots[currentSlide]
+                .classList
+                .remove("active");
+
+
+            currentSlide = index;
+
+
+            slides[currentSlide]
+                .classList
+                .add("active");
+
+
+            dots[currentSlide]
+                .classList
+                .add("active");
+
+        }
+
+
+        /* ============================================= */
+        /* NEXT SLIDE                                  */
+        /* ============================================= */
+
+        function nextSlide() {
+
+            showSlide(
+                currentSlide + 1
+            );
+
+        }
+
+
+        /* ============================================= */
+        /* PREVIOUS SLIDE                              */
+        /* ============================================= */
+
+        function prevSlide() {
+
+            showSlide(
+                currentSlide - 1
+            );
+
+        }
+
+
+        /* ============================================= */
+        /* BLOW CANDLES                                */
+        /* ============================================= */
+
+        function blowCandles() {
+
+            const flames =
+                document.querySelectorAll(".flame");
+
+            flames.forEach(
+                flame => {
+
+                    flame.style.transition =
+                        "all 0.5s ease";
+
+                    flame.style.transform =
+                        "translateY(-30px) scale(0)";
+
+                    flame.style.opacity =
+                        "0";
+
+                }
+            );
+
+
+            createBigHeartExplosion();
+
+
+            setTimeout(
+                () => {
+
+                    nextSlide();
+
+                },
+                1200
+            );
+
+        }
+
+
+        /* ============================================= */
+        /* HEART EXPLOSION                              */
+        /* ============================================= */
+
+        function createBigHeartExplosion() {
+
+            for (
+                let i = 0;
+                i < 25;
+                i++
+            ) {
+
+                const heart =
+                    document.createElement("div");
+
+
+                heart.innerHTML =
+                    Math.random() > 0.5
+                        ? "❤️"
+                        : "💖";
+
+
+                heart.style.position =
+                    "fixed";
+
+
+                heart.style.left =
+                    "50%";
+
+
+                heart.style.top =
+                    "50%";
+
+
+                heart.style.fontSize =
+                    (
+                        18 +
+                        Math.random() * 25
+                    ) + "px";
+
+
+                heart.style.zIndex =
+                    "999";
+
+
+                heart.style.pointerEvents =
+                    "none";
+
+
+                document.body
+                    .appendChild(heart);
+
+
+                const angle =
+                    Math.random() *
+                    Math.PI * 2;
+
+
+                const distance =
+                    150 +
+                    Math.random() * 300;
+
+
+                const x =
+                    Math.cos(angle) *
+                    distance;
+
+
+                const y =
+                    Math.sin(angle) *
+                    distance;
+
+
+                heart.animate(
+
+                    [
+                        {
+                            transform:
+                                "translate(-50%, -50%) scale(0)",
+                            opacity: 0
+                        },
+
+                        {
+                            transform:
+                                "translate(-50%, -50%) scale(1)",
+                            opacity: 1
+                        },
+
+                        {
+                            transform:
+                                `translate(
+                                    calc(-50% + ${x}px),
+                                    calc(-50% + ${y}px)
+                                )
+                                scale(0.5)`,
+                            opacity: 0
+                        }
+                    ],
+
+                    {
+                        duration: 1200,
+                        easing: "ease-out"
+                    }
+
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        heart.remove();
+
+                    },
+                    1300
+                );
+
+            }
+
+        }
+
+
+        /* ============================================= */
+        /* RESTART                                     */
+        /* ============================================= */
+
+        function restart() {
+
+            currentSlide = 0;
+
+
+            slides.forEach(
+                slide => {
+
+                    slide.classList
+                        .remove("active");
+
+                }
+            );
+
+
+            dots.forEach(
+                dot => {
+
+                    dot.classList
+                        .remove("active");
+
+                }
+            );
+
+
+            slides[0]
+                .classList
+                .add("active");
+
+
+            dots[0]
+                .classList
+                .add("active");
+
+
+            /*
+                Restore candle flames
+                for replay
+            */
+
+            const flames =
+                document.querySelectorAll(".flame");
+
+
+            flames.forEach(
+                flame => {
+
+                    flame.style.transform =
+                        "";
+
+                    flame.style.opacity =
+                        "";
+
+                }
+            );
+
+        }
+
+
+        /* ============================================= */
+        /* KEYBOARD CONTROLS                           */
+        /* ============================================= */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key ===
+                    "ArrowRight"
+                ) {
+
+                    nextSlide();
+
+                }
+
+
+                if (
+                    event.key ===
+                    "ArrowLeft"
+                ) {
+
+                    prevSlide();
+
+                }
+
+
+                if (
+                    event.key ===
+                    "Enter"
+                    &&
+                    currentSlide === 0
+                ) {
+
+                    startBirthday();
+
+                }
+
+            }
+        );
+
+
+        /* ============================================= */
+        /* FLOATING HEARTS                              */
+        /* ============================================= */
+
+        function createHeart() {
+
+            const heart =
+                document.createElement("div");
+
+
+            heart.classList
+                .add("floating-heart");
+
+
+            heart.innerHTML =
+                Math.random() > 0.5
+                    ? "❤️"
+                    : "💖";
+
+
+            heart.style.left =
+                Math.random() * 100 +
+                "vw";
+
+
+            heart.style.fontSize =
+                (
+                    15 +
+                    Math.random() * 25
+                ) + "px";
+
+
+            heart.style.animationDuration =
+                (
+                    4 +
+                    Math.random() * 5
+                ) + "s";
+
+
+            document.body
+                .appendChild(heart);
+
+
+            setTimeout(
+                () => {
+
+                    heart.remove();
+
+                },
+                9000
+            );
+
+        }
+
+
+        setInterval(
+            createHeart,
+            700
+        );
+
+    </script>
+
+</body>
+</html>
